@@ -1,15 +1,17 @@
 <div class="container">
   <h1>Login Page</h1>
-  <form action="" class="login-form">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.valid)" class="login-form">
     <mat-form-field>
-      <mat-label>Username</mat-label>
-      <input matInput>
+      <mat-label for="username" >Username</mat-label>
+      <input [(ngModel)]="username" matInput type="text" name="username" required>
+      <mat-error *ngIf="loginForm.invalid">Please enter a user name</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Password</mat-label>
-      <input matInput>
+      <mat-label for="password" >Password</mat-label>
+      <input [(ngModel)]="password" matInput type="password" name="password" required>
+      <mat-error *ngIf="loginForm.invalid">Please enter a password</mat-error>
     </mat-form-field>
-    <button mat-flat-button color="accent" class="btn-login">Login</button>
+    <button mat-flat-button color="accent" class="btn-login" type="submit">Login</button>
   </form>
   <p>Don't have an account? <a routerLink="/register">Register Here!</a></p>
 </div>

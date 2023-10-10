@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, FormControl, Validators } from '@angular/forms';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { MatInputModule } from '@angular/material/input';
@@ -13,6 +14,7 @@ import { RegisterComponent } from './register/register.component';
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
+    FormsModule,
     AuthRoutingModule,
     MatFormFieldModule,
     MatInputModule,
@@ -21,7 +23,7 @@ import { RegisterComponent } from './register/register.component';
   exports: [
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
+    MatButtonModule
   ]
 })
 export class AuthModule { }
