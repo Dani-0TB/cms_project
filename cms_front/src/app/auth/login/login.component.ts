@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { User } from '../user';
 
 @Component({
   selector: 'app-login',
@@ -8,21 +8,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  constructor (
-    private authService: AuthService,
-    private router: Router
-    ) {}
+  user: User = {
+    username: "",
+    password: ""
+  }
 
-  login(isValid: boolean | null){
-    if (!isValid) {
-      return;
-    }
-    this.authService.login().subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        this.router.navigate(['/home']);
-      }
-    })
+  constructor (
+    private authService: AuthService
+    ) { }
+
+  onSubmit() {
+    this.authService.login(this.user);
   }
 }
